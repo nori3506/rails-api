@@ -1,13 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Article, type: :model do
-  it 'tests article object' do
-    #expect(1).to be_positive
-    #expect(5).to be > 3
-    #article = Article.create({title:"Sample article", content:"aaa"})
 
-    article = create(:article)
+  describe "#validations" do
+    let(:article) {build(:article)  }
 
-    expect(article.title).to eq("Sample article")
+    it 'tests that factory is valid' do
+      expect(article).to be_valid
+      expect(article.title).to eq("Sample article")
+    end
+
+    it 'has an invalid title' do
+      article.title = ""
+      expect(article).not_to be_valid
+      expect(article.errors[:title]).to include("can't be blank")
+    end
   end
 end
