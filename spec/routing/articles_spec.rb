@@ -6,6 +6,5 @@ RSpec.describe "/articles routes" do
       expect(get "/articles").to route_to(controller: 'articles', action: 'index')
       expect(get '/articles').to route_to('articles#index')
     end
-    
   end
 end
