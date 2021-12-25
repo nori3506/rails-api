@@ -1,6 +1,9 @@
 class ArticlesController < ApplicationController
   def index
     render json:{}
-    # @articles = Article.all
+  end
+
+  def show
+    render json:{"id": params[:id]}
   end
 end
