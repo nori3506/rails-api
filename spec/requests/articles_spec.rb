@@ -50,4 +50,27 @@ RSpec.describe ArticlesController do
     end
   end
   
+  describe "#show" do
+    let!(:article) { create :article }
+    # get "/article/#{article.id}"
+    subject { get "/articles/#{article.id}" }
+    before { subject }
+
+    it 'returns a success response' do
+      expect(response).to have_http_status(:ok)
+    end
+
+
+    it 'returns a procer JSON' do
+      expect(json_data[:id]).to eq(article.id.to_s)
+      expect(json_data[:type]).to  eq("article")
+      expect(json_data[:attributes]).to eq(
+        title: article.title,
+        content: article.content,
+        slug: article.slug
+      )
+    end
+    
+  end
+  
 end

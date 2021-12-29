@@ -7,7 +7,11 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    render json:{"id": params[:id]}
+    article = Article.find(params[:id])
+    render json: serializer.new(article)
+  # rescue ActiveRecord::RecordNotFound => e
+  #   render json: {message: e.message, detail: "aaa"}
+  
   end
 
   def serializer
