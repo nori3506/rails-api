@@ -1,9 +1,10 @@
 FactoryBot.define do
   factory :user do
-    login { "MyString" }
-    name { "MyString" }
-    url { "MyString" }
-    avatar_url { "MyString" }
-    provider { "MyString" }
+    # login { "MyString" }
+    sequence(:login) {|n| "jsmith#{n}"}
+    name { "John Smith" }
+    url { "http://example.com" }
+    avatar_url { "http://example.com/avatar" }
+    provider { "github" }
   end
 end
