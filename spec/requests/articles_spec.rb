@@ -70,7 +70,5 @@ RSpec.describe ArticlesController do
         slug: article.slug
       )
     end
-    
   end
-  
 end
